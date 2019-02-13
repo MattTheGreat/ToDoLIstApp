@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/model/app_config.dart';
 import 'package:todo_app/model/usertodo_model.dart';
 import 'package:todo_app/services/usertodo_service.dart';
 
-void main() => runApp(new MyApp());
+// void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -24,8 +25,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 class Home extends StatelessWidget{
 
-  callApi() {
-    getAllPost().then((response){
+  callApi(Uri endpoint) {
+    getAllPost(endpoint).then((response){
         print(response);
     }).catchError((error){
       print('error : $error');
@@ -35,12 +36,14 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    var config = AppConfig.of(context);
+
     return Scaffold(
       appBar: AppBar(),
         body : FutureBuilder<List<UserTodo>>(
-            future: getAllPost(),
+            future: getAllPost(config.apiBaseUrl),
             builder: (context, snapshot) {
-              callApi();
+              callApi(config.apiBaseUrl);
               if(snapshot.connectionState == ConnectionState.done) {
 
                 if(snapshot.hasError){
@@ -48,7 +51,7 @@ class Home extends StatelessWidget{
                 }
 
                 // return Text('Title from Post JSON : ${snapshot.data.first.title}');
-                return Text('Title: ${snapshot.data.first.title}, Description: ${snapshot.data.first.description}, Complete: ${snapshot.data.first.isComplete}');
+                return Text('Title: ${config.appName}, Description: ${snapshot.data.first.description}, Complete: ${snapshot.data.first.isComplete}');
 
               }
               else

@@ -5361,7 +5361,6 @@
       "sha512": "ex8MZwgoyqHim1L6/65FnfjdSMtSKSuSU3DVoiCADZACc05T7f8uRB7SnDIP5LPQKLUBLilfNkd1p14RLyfdQA==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.2.0",
-      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5744,7 +5743,6 @@
       "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
-      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "ThirdPartyNotices.rtf",
@@ -5982,7 +5980,6 @@
       "sha512": "wn1ULjQbFadRosiNJE4B65iR5eYL3FkMezH4Tyv8EmdmN5XfCTzIgkk1mQJ1Zcb61Kb3qyZMeGidanwR7h/gug==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.tools/2.2.0",
-      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12078,17 +12075,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoApi/TodoApi.csproj",
-      "projectName": "TodoApi",
-      "projectPath": "/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoApi/TodoApi.csproj",
+      "projectUniqueName": "/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/TodoAppApi.csproj",
+      "projectName": "TodoAppApi",
+      "projectPath": "/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/TodoAppApi.csproj",
       "packagesPath": "/Users/brielledavis/.nuget/packages/",
-      "outputPath": "/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoApi/obj/",
+      "outputPath": "/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/brielledavis/.nuget/NuGet/NuGet.Config"
+        "/Users/brielledavis/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -12113,8 +12110,7 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )",
-            "autoReferenced": true
+            "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",

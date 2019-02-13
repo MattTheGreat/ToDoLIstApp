@@ -1,6 +1,4 @@
 
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:todo_app/model/usertodo_model.dart';
@@ -9,17 +7,17 @@ import 'package:todo_app/model/usertodo_model.dart';
 //String _sumUrl = 'localhost:5001';// Good for web dev, bad for android :(
 
 
-Uri getUri()  {
-  if(Platform.isAndroid) {
-    return new Uri.http("10.0.2.2:5001", '/api/todotask');
-  }
-  return new Uri.http("localhost:5001", '/api/todotask');
-}
+// Uri getUri()  {
+//   if(Platform.isAndroid) {
+//     return new Uri.http("10.0.2.2:5001", '/api/todotask');
+//   }
+//   return new Uri.http("localhost:5001", '/api/todotask');
+// }
 
-Future<List<UserTodo>> getAllPost() async {
+Future<List<UserTodo>> getAllPost(Uri endpoint) async {
   try  {
-    var localuri = getUri(); //get the uri based on device
-    final response = await http.get(localuri);
+    // var localuri = getUri(); //get the uri based on device
+    final response = await http.get(endpoint);
     print(response.body);
     return allPostsFromJson(response.body);
 

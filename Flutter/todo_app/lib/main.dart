@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/model/usertodo_model.dart';
-import 'package:todo_app/services/userTodo_service.dart';
+import 'package:todo_app/services/usertodo_service.dart';
 
 void main() => runApp(new MyApp());
 

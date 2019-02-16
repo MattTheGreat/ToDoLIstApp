@@ -1,1 +1,0 @@
-Contains common widgets for your applications. For Example: Button, Textfield etc. 

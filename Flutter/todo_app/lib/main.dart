@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/model/app_config.dart';
 import 'package:todo_app/model/usertodo_model.dart';
 import 'package:todo_app/services/usertodo_service.dart';
+import 'package:todo_app/widgets/stateful/usertask/usertask_widget.dart';
 
 // void main() => runApp(new MyApp());
 
@@ -9,23 +10,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        home: Home()
+        home: TodoApp()
     );
   }
 }
 
-  // callApi() {
-  //   getAllPost().then((response){
-  //       print(response);
-  //   }).catchError((error){
-  //     print('error : $error');
-  //   });
-  // }
-
   // This widget is the root of your application.
-class Home extends StatelessWidget{
+class TodoApp extends StatelessWidget{
 
-  callApi(Uri endpoint) {
+  callApi(String endpoint) {
     getAllPost(endpoint).then((response){
         print(response);
     }).catchError((error){
@@ -39,20 +32,24 @@ class Home extends StatelessWidget{
     var config = AppConfig.of(context);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Codelife Todo(" + config.environmentName +")"),
+        ),
         body : FutureBuilder<List<UserTodo>>(
             future: getAllPost(config.apiBaseUrl),
             builder: (context, snapshot) {
               callApi(config.apiBaseUrl);
               if(snapshot.connectionState == ConnectionState.done) {
-
+                // String tasks = "${config.appName}";
                 if(snapshot.hasError){
                   return Text("Error");
                 }
-
+                // snapshot.data.forEach((task) => 
+                //   tasks = tasks + "${task.title}, Description: ${task.description}, Complete: ${task.isComplete} \n"
+                // );
                 // return Text('Title from Post JSON : ${snapshot.data.first.title}');
-                return Text('Title: ${config.appName}, Description: ${snapshot.data.first.description}, Complete: ${snapshot.data.first.isComplete}');
-
+                //this needs to return the stateful widget not a text
+                return UserTaskWidget(tasks: snapshot.data);
               }
               else
                 return CircularProgressIndicator();

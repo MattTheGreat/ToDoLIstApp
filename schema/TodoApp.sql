@@ -3,7 +3,7 @@ create table TaskManagement (
     Title              varchar(255) null,
     TaskDescription    varchar(1500) null,
     LastModified       datetime null,
-    TaskStartDate      datetime null,
+    CreationDate	   datetime null,
     TaskCompletionDate datetime null,
     TaskComplete       bit null
 )

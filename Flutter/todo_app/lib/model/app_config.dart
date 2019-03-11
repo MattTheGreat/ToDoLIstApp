@@ -12,7 +12,7 @@ class AppConfig extends InheritedWidget {
 
   final String appName;
   final String environmentName;
-  final Uri apiBaseUrl;
+  final String apiBaseUrl;
 
   static AppConfig of(BuildContext context) {
     return context.inheritFromWidgetOfExactType(AppConfig);

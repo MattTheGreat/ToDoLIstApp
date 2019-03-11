@@ -4,12 +4,12 @@ import 'package:todo_app/main.dart';
 import 'package:todo_app/model/app_config.dart';
 
 
-Uri getUri()  {
+String getUri()  {
   if(Platform.isAndroid) {
-    return new Uri.http("10.0.2.2:5001", '/api/todotask');
+    return "10.0.2.2:5001";
   }
   if(Platform.isIOS) {
-    return new Uri.http("localhost:5001", '/api/todotask');
+    return "localhost:5001";
   }
   return null;
 }

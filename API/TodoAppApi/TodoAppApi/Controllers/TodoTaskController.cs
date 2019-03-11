@@ -15,17 +15,28 @@ namespace TodoApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            var todoTask = new UserTask
+            var todoTask1 = new UserTask
             {
-                Title = "Test Task",
+                Title = "Test Task 1",
                 Description = "Do it now!",
                 CreateDate = DateTime.Now,
                 ReadDate = DateTime.Now,
                 IsComplete = false
 
             };
+            var todoTask2 = new UserTask
+            {
+                Title = "Test Task 2",
+                Description = "Do it agin!",
+                CreateDate = DateTime.Now,
+                ReadDate = DateTime.Now,
+                IsComplete = false
+
+            };
+
             var taskArray = new List<UserTask>();
-            taskArray.Add(todoTask);
+            taskArray.Add(todoTask1);
+            taskArray.Add(todoTask2);
             return Ok(JsonConvert.SerializeObject(taskArray));
         }
 

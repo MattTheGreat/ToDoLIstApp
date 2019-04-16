@@ -1,4 +1,4 @@
-
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:todo_app/model/usertodo_model.dart';
@@ -13,6 +13,22 @@ String kpath = "/api/todotask";
 //   }
 //   return new Uri.http("localhost:5001", '/api/todotask');
 // }
+
+Future<http.Response> createPost(String endpoint, UserTodo postData) async {
+  try  {
+    final response = await http.post(new Uri.http(endpoint, kpath),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json'
+      },
+      body: postToJson(postData)
+    );
+    return response;
+  } catch (e) {
+    print(e.toString());
+    throw new Exception(e.toString());
+  }
+}
+
 
 Future<List<UserTodo>> getAllPost(String endpoint) async {
   try  {

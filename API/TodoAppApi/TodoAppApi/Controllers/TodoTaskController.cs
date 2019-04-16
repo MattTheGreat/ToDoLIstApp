@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+
 
 namespace TodoApi.Controllers
 {
@@ -11,10 +13,13 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoTaskController : ControllerBase
     {
+        
+        public List<UserTask> _taskArray;
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+
             var todoTask1 = new UserTask
             {
                 Title = "Test Task 1",
@@ -34,10 +39,11 @@ namespace TodoApi.Controllers
 
             };
 
-            var taskArray = new List<UserTask>();
-            taskArray.Add(todoTask1);
-            taskArray.Add(todoTask2);
-            return Ok(JsonConvert.SerializeObject(taskArray));
+            _taskArray = new List<UserTask>();
+            _taskArray.Add(todoTask1);
+            _taskArray.Add(todoTask2);
+
+            return Ok(JsonConvert.SerializeObject(_taskArray));
         }
 
         // GET api/values/5
@@ -49,8 +55,9 @@ namespace TodoApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
+        public void Post([FromBody] UserTask value)
+        {            
+            _taskArray.Add(value);
         }
 
         // PUT api/values/5

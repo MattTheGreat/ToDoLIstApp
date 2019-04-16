@@ -3,7 +3,6 @@
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/bin/Debug/netcoreapp2.2/TodoAppApi.runtimeconfig.dev.json
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/bin/Debug/netcoreapp2.2/TodoAppApi.dll
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/bin/Debug/netcoreapp2.2/TodoAppApi.pdb
-/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.csprojAssemblyReference.cache
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.csproj.CoreCompileInputs.cache
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.RazorAssemblyInfo.cache
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.RazorTargetAssemblyInfo.cache
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.dll
 /Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.pdb
+/Users/brielledavis/Desktop/TodoApp/ToDoLIstApp/API/TodoAppApi/TodoAppApi/obj/Debug/netcoreapp2.2/TodoAppApi.csprojAssemblyReference.cache

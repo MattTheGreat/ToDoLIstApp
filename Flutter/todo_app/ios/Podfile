@@ -4,6 +4,12 @@
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
+project 'Runner', {
+  'Debug' => :debug,
+  'Profile' => :release,
+  'Release' => :release,
+}
+
 def parse_KV_file(file, separator='=')
   file_abs_path = File.expand_path(file)
   if !File.exists? file_abs_path
@@ -32,7 +38,7 @@ target 'Runner' do
   system('rm -rf .symlinks')
   system('mkdir -p .symlinks/plugins')
 
-  # Flutter Pods
+  # Flutter Pods  
   generated_xcode_build_settings = parse_KV_file('./Flutter/Generated.xcconfig')
   if generated_xcode_build_settings.empty?
     puts "Generated.xcconfig must exist. If you're running pod install manually, make sure flutter packages get is executed first."

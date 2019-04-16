@@ -1,8 +1,15 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 UserTodo postFromJson(String str) {
   final jsonData = json.decode(str);
   return UserTodo.fromJson(jsonData);
+}
+
+String postToJson(UserTodo data) {
+  final jsonData = data.toJson();
+  return json.encode(jsonData);
 }
 
 List<UserTodo> allPostsFromJson(String str) {
@@ -13,14 +20,15 @@ List<UserTodo> allPostsFromJson(String str) {
 }
 
 class UserTodo {
-  String title;
-  String description;
-  DateTime createDate;
-  DateTime readDate;
-  bool isComplete;
-  bool isDeleted;
+  final String title;
+  final String description;
+  final DateTime createDate;
+  final DateTime readDate;
+  final bool isComplete;
+  final bool isDeleted;
 
-  UserTodo({
+  const UserTodo({
+    Key key,
     this.title,
     this.description,
     this.createDate,
@@ -41,7 +49,7 @@ class UserTodo {
   Map<String, dynamic> toJson() => {
       "title": title,
       "description": description,
-      "createDate": createDate,
+      "createDate": createDate.toString(),
       "readDate": readDate,
       "isComplete": isComplete,
       "isDeleted": isDeleted

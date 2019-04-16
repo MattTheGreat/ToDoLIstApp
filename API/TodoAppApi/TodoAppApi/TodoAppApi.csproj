@@ -12,5 +12,11 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\NewValuesController.cs" />
+    <Compile Remove="Domains\Todo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domains\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Queries\" />
   </ItemGroup>
 </Project>

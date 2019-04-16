@@ -8,7 +8,6 @@ class UserTaskWidget extends StatefulWidget {
   UserTaskWidget({Key key, @required this.tasks}) : super(key:key);
   @override
     State<StatefulWidget> createState() {
-      // TODO: implement createState
       return UserTaskStateManager();
     }
 }

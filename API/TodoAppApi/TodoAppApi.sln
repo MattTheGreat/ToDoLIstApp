@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppApi", "TodoAppApi\TodoAppApi.csproj", "{C5FA77C7-E755-4EBF-B272-249740D53AD8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution", "_Solution", "{057E510E-4B62-48F4-983B-F447D8FC3BB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{AE6CA1A2-99EF-45CA-BA42-FAB156976315}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{A43C69DF-DF9D-42C4-8C50-EA52CE5E71B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +19,10 @@ Global
 		{C5FA77C7-E755-4EBF-B272-249740D53AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5FA77C7-E755-4EBF-B272-249740D53AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5FA77C7-E755-4EBF-B272-249740D53AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5FA77C7-E755-4EBF-B272-249740D53AD8} = {AE6CA1A2-99EF-45CA-BA42-FAB156976315}
+		{AE6CA1A2-99EF-45CA-BA42-FAB156976315} = {057E510E-4B62-48F4-983B-F447D8FC3BB7}
+		{A43C69DF-DF9D-42C4-8C50-EA52CE5E71B0} = {057E510E-4B62-48F4-983B-F447D8FC3BB7}
 	EndGlobalSection
 EndGlobal

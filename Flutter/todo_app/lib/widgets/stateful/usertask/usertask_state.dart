@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-//import 'package:todo_app/model/app_config.dart';
 import 'package:todo_app/model/usertodo_model.dart';
 import 'package:todo_app/widgets/stateful/usertask/usertask_widget.dart';
-import 'package:todo_app/widgets/stateless/usertaskedit_widget.dart';
+import 'package:todo_app/widgets/stateful/usertaskform/usertaskform_widget.dart';
 
 class UserTaskStateManager extends State<UserTaskWidget> {
 
@@ -11,7 +9,7 @@ class UserTaskStateManager extends State<UserTaskWidget> {
   Widget build(BuildContext context) {
     List<UserTodo> items = widget.tasks;
 
-    // addNewTask() {
+    //addNewTask() {
     //   var newTask = new UserTodo();
     //   newTask.title = "NEW CARD " + items.length.toString();
     //   items.add(newTask);
@@ -23,9 +21,12 @@ class UserTaskStateManager extends State<UserTaskWidget> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: (){
-            Navigator.push(context, MaterialPageRoute<Null>(
+            Navigator.push(
+              context, 
+              MaterialPageRoute<Null>(
               builder: (BuildContext context) {
-                return UserTaskEdit();
+                return UserTaskForm();
+                //return UserTaskEdit();
               },
               fullscreenDialog: true,
             ));

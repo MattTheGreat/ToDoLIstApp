@@ -8,9 +8,10 @@
             "name": "Flutter",
             "request": "launch",
             "type": "dart",
-            "args": [
-                " -t lib/environments/local_environment.dart"
-            ]
+            "program": "lib/environments/local_environment.dart"
+            // "args": [
+            //     "-t"
+            // ]
         }
     ]
 }

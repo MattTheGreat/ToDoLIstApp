@@ -2,14 +2,13 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="TodoAppApi/Startup.cs">
     <Files>
       <File FileName="TodoAppApi/Controllers/ValuesController.cs" Line="1" Column="1" />
-      <File FileName="TodoAppApi/Controllers/TodoTaskController.cs" Line="78" Column="1" />
+      <File FileName="TodoAppApi/Controllers/TodoTaskController.cs" Line="1" Column="1" />
       <File FileName="TodoAppApi/Program.cs" Line="1" Column="1" />
       <File FileName="TodoAppApi/Startup.cs" Line="1" Column="1" />
       <File FileName="TodoAppApi/Properties/launchSettings.json" Line="1" Column="1" />
       <File FileName="TodoAppApi/Controllers/NewValuesController.cs" Line="1" Column="1" />
       <File FileName="TodoAppApi/appsettings.json" Line="1" Column="1" />
       <File FileName="TodoAppApi/appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="TodoAppApi/Domains/Task.cs" Line="11" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

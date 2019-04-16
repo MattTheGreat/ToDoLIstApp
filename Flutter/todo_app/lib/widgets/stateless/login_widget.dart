@@ -22,6 +22,19 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _buildText(),
+            TextField(
+              //controller: _titleController,
+              decoration: InputDecoration(
+                labelText: "Title:"
+              ),
+            ),
+            TextField(
+              //controller: _descriptionController,
+              decoration: InputDecoration(
+                labelText: "Description:"
+              ),
+            ),
+
             // Space between "Recipes" and the button:
             SizedBox(height: 50.0),
             GoogleSignInButton(onPressed: () => 

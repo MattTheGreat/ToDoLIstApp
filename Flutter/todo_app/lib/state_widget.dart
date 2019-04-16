@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo_app/model/state.dart';
 import 'package:todo_app/util/auth.dart';
+import 'package:todo_app/widgets/stateless/login_widget.dart';
 
 class StateWidget extends StatefulWidget {
   final StateModel state;
@@ -66,6 +67,20 @@ class _StateWidgetState extends State<StateWidget> {
       state.user = firebaseUser;
     });
   }
+
+  Future<LoginScreen> signOutWithGoogle() async {
+    await googleSignIn.signOut().then((onValue){
+      googleAccount = null;
+      setState(() {
+         //state.isLoading = true;
+         state.user = null;
+
+       });
+    });
+    //initState();
+    return LoginScreen();
+  }
+
 
   @override
   Widget build(BuildContext context) {

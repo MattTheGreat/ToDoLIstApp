@@ -15,6 +15,18 @@ class TodoApp extends StatefulWidget {
 
 }
 
+class Choice {
+  const Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
+}
+
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Sign Out', icon: Icons.settings),
+  const Choice(title: 'Account', icon: Icons.person)
+];
 
 class TodoAppState extends State<TodoApp>{
   StateModel appState;
@@ -27,12 +39,31 @@ class TodoAppState extends State<TodoApp>{
     });
   }
 
+  void _select(Choice choice) {
+    if(choice.title == 'Sign Out') {
+      StateWidget.of(context).signOutWithGoogle().then((onValue) {
+        Navigator.of(context).pushNamedAndRemoveUntil("/", ModalRoute.withName("/"));
+      });
+    }
+  }
 
   Widget _buildTodoList(BuildContext context) {
     var config = AppConfig.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Codelife Todo(" + config.environmentName +")"),
+        actions: <Widget>[
+          PopupMenuButton<Choice>(
+            onSelected: _select,
+            itemBuilder: (BuildContext context) {
+            return choices.map((Choice choise) {
+                return PopupMenuItem<Choice>(
+                  value:  choise,
+                  child: Text(choise.title),
+                );
+            }).toList();
+          },)
+        ],
         ),
         body : FutureBuilder<List<UserTodo>>(
           //Future builder. Basically calls the getAllPost Method from the usertodo_service 

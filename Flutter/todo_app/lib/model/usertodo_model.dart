@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 UserTodo postFromJson(String str) {
@@ -12,11 +13,22 @@ String postToJson(UserTodo data) {
   return json.encode(jsonData);
 }
 
+DateTime timeStampToDateTime(Timestamp ts) {
+  if(ts != null) {
+    return DateTime.fromMicrosecondsSinceEpoch(ts.microsecondsSinceEpoch); 
+  }
+  return null;
+}
+
 List<UserTodo> allPostsFromJson(String str) {
   final jsonData = json.decode(str).cast<Map<String, dynamic>>();
   //return new List<UserTodo>.from(jsonData.map((x) => UserTodo.fromJson(x)));
   //return parsed.map<Photo>((json) => Photo.fromJson(json)).toList();
   return jsonData.map<UserTodo>((json) => UserTodo.fromJson(json)).toList();
+}
+
+List<UserTodo> allQueriesToModel(List<DocumentSnapshot> snapshot){
+  return snapshot.map<UserTodo>((snap) => UserTodo.fromQuery(snap)).toList();
 }
 
 class UserTodo {
@@ -45,6 +57,17 @@ class UserTodo {
       isComplete: parsedJson['IsComplete'] as bool,
       isDeleted: parsedJson['IsDeleted'] as bool
   );
+
+
+  factory UserTodo.fromQuery(DocumentSnapshot snap) => UserTodo(
+      title: snap['Title'],
+      description: snap['Description'],
+      createDate: timeStampToDateTime(snap['CreateDate']), //DateTime.fromMicrosecondsSinceEpoch(snap['CreateDate'].microsecondsSinceEpoch),
+      readDate:  timeStampToDateTime(snap['ReadDate']), //DateTime.fromMicrosecondsSinceEpoch(.microsecondsSinceEpoch),
+      isComplete: snap['IsComplete'] as bool,
+      isDeleted: snap['IsDeleted'] as bool
+  );
+
 
   Map<String, dynamic> toJson() => {
       "title": title,

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/model/app_config.dart';
 import 'package:todo_app/model/state.dart';
-import 'package:todo_app/model/usertodo_model.dart';
 import 'package:todo_app/services/usertodo_service.dart';
 import 'package:todo_app/state_widget.dart';
 import 'package:todo_app/widgets/stateful/usertask/usertask_widget.dart';
 import 'package:todo_app/widgets/stateless/login_widget.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TodoApp extends StatefulWidget {
 
@@ -65,26 +64,40 @@ class TodoAppState extends State<TodoApp>{
           },)
         ],
         ),
-        body : FutureBuilder<List<UserTodo>>(
-          //Future builder. Basically calls the getAllPost Method from the usertodo_service 
-          //which returns a Future. And the results are returned to snapshot of the future builder. 
-            future: getAllPost(config.apiBaseUrl),
-            builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.done) {
-
-                if(snapshot.hasError){
-                  return Text("Error");
-                }
-                // snapshot.data.forEach((task) => 
-                //   tasks = tasks + "${task.title}, Description: ${task.description}, Complete: ${task.isComplete} \n"
-                // );
-                // return Text('Title from Post JSON : ${snapshot.data.first.title}');
-                return UserTaskWidget(tasks: snapshot.data);
-              }
-              else
-                return CircularProgressIndicator();
+        body : StreamBuilder(
+           stream:  Firestore.instance.collection(appState.user.email).snapshots(),
+           builder: (context, snapshot) {
+            if(!snapshot.hasData) {
+              return CircularProgressIndicator();
             }
+            if(snapshot.hasError){
+                return Text("Error");
+            }
+             var todoitems = snapshot.data.documents;
+             //return new Text(todoitem.data["Title"]);
+            return UserTaskWidget(tasks: jsonToUserTodo(todoitems));
+           },
         )
+        // FutureBuilder<List<UserTodo>>(
+        //   //Future builder. Basically calls the getAllPost Method from the usertodo_service 
+        //   //which returns a Future. And the results are returned to snapshot of the future builder. 
+        //     future: getAllPost(config.apiBaseUrl),
+        //     builder: (context, snapshot) {
+        //       if(snapshot.connectionState == ConnectionState.done) {
+
+        //         if(snapshot.hasError){
+        //           return Text("Error");
+        //         }
+        //         // snapshot.data.forEach((task) => 
+        //         //   tasks = tasks + "${task.title}, Description: ${task.description}, Complete: ${task.isComplete} \n"
+        //         // );
+        //         // return Text('Title from Post JSON : ${snapshot.data.first.title}');
+        //         return UserTaskWidget(tasks: snapshot.data);
+        //       }
+        //       else
+        //         return CircularProgressIndicator();
+        //     }
+        // )
     );
   }
 

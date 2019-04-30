@@ -25,7 +25,7 @@ class UserTaskStateManager extends State<UserTaskWidget> {
               context, 
               MaterialPageRoute<Null>(
               builder: (BuildContext context) {
-                return UserTaskForm();
+                return UserTaskForm(task: null);
                 //return UserTaskEdit();
               },
               fullscreenDialog: true,
@@ -40,6 +40,17 @@ class UserTaskStateManager extends State<UserTaskWidget> {
           itemBuilder: (context, position){
             return ListTile(
               title: Text(items[position].title.toString()),
+              onTap: (() => {
+                Navigator.push(
+                context, 
+                MaterialPageRoute<Null>(
+                  builder: (BuildContext context) {
+                    return UserTaskForm(task: items[position]);
+                //return UserTaskEdit();
+                  },
+                  fullscreenDialog: true,
+                ))
+              }),
             ); 
           }
         ),

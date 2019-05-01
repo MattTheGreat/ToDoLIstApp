@@ -31,16 +31,25 @@ class UserTaskFormState extends State<UserTaskForm> {
     _taskcomplete = task.isComplete;
   }
 
+  DateTime getDate() {
+    if(widget.task != null) {
+      return widget.task.createDate;
+    }
+    return DateTime.now();
+  }
+
+
   saveTask(String endpoint) {
       UserTodo userTaskToSave = new UserTodo(
+        id: widget.task?.id ?? null,
         title: _titleController.text,
         description: _descriptionController.text,
-        createDate: DateTime.now(),
+        createDate: getDate(),
         readDate: null,
         isComplete: _taskcomplete,
         isDeleted: false
         );
-      
+
       if(userTaskToSave.title != null && userTaskToSave.title.isNotEmpty) {
         _validTitle = false;
         createRecordasync(userTaskToSave, appState).then((response){

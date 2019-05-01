@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:todo_app/model/state.dart';
 import 'dart:async';
 import 'package:todo_app/model/usertodo_model.dart';
-
+import 'package:uuid/uuid.dart';
 //String _sumuri = "10.0.2.2:5001"; //This is the alias back to your machine localhost for a emulated device.
 //String _sumUrl = 'localhost:5001';// Good for web dev, bad for android :(
 String kpath = "/api/todotask";
@@ -48,7 +48,12 @@ List<UserTodo> jsonToUserTodo(List<DocumentSnapshot> snapshot){
 }
 
 Future<void> createRecordasync(UserTodo todo, StateModel state) async {
-  Firestore.instance.collection(state.user.email).document(todo.title).setData({
+  String id = todo.id;
+  if(todo.id == null) {
+    id = todo.createDate.toString() + new Uuid().v1();
+  }
+  Firestore.instance.collection(state.user.email).document(id).setData({
+      "Id": id,
       "Title": todo.title,
       "Description": todo.description,
       "CreateDate": todo.createDate,
@@ -56,6 +61,12 @@ Future<void> createRecordasync(UserTodo todo, StateModel state) async {
       "IsComplete": todo.isComplete,
       "IsDeleted": todo.isDeleted
   });
+}
+Future<void> removeRecordsAsync(List<UserTodo> todos, List<int> positions, StateModel state) {
+  for(var a in positions) {
+    Firestore.instance.collection(state.user.email).document(todos[a].id).delete();
+  }
+  return null;
 }
 
 

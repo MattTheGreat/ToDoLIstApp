@@ -32,6 +32,7 @@ List<UserTodo> allQueriesToModel(List<DocumentSnapshot> snapshot){
 }
 
 class UserTodo {
+  final String id;
   final String title;
   final String description;
   final DateTime createDate;
@@ -41,6 +42,7 @@ class UserTodo {
 
   const UserTodo({
     Key key,
+    this.id,
     this.title,
     this.description,
     this.createDate,
@@ -50,6 +52,7 @@ class UserTodo {
   });
 
   factory UserTodo.fromJson(Map<String, dynamic> parsedJson) => UserTodo(
+      id: parsedJson['Id'],
       title: parsedJson['Title'],
       description: parsedJson['Description'],
       createDate: DateTime.parse(parsedJson['CreateDate']),
@@ -60,6 +63,7 @@ class UserTodo {
 
 
   factory UserTodo.fromQuery(DocumentSnapshot snap) => UserTodo(
+      id: snap['Id'],
       title: snap['Title'],
       description: snap['Description'],
       createDate: timeStampToDateTime(snap['CreateDate']), //DateTime.fromMicrosecondsSinceEpoch(snap['CreateDate'].microsecondsSinceEpoch),
@@ -70,6 +74,7 @@ class UserTodo {
 
 
   Map<String, dynamic> toJson() => {
+      "id": id,
       "title": title,
       "description": description,
       "createDate": createDate.toString(),

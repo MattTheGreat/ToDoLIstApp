@@ -65,12 +65,21 @@ class UserTaskStateManager extends State<UserTaskWidget> {
       return new Text("");
     }
 
+    Color turnRedIfDelete() {
+      if(_showDelete) {
+        return Colors.red;
+      }
+      return Colors.deepPurple;
+    }
+
 
     return Scaffold(
+      backgroundColor: Colors.white,
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             FloatingActionButton(
+              backgroundColor: turnRedIfDelete(),
               child:  getIcon(),//Icon(Icons.add),
               onPressed: (){
                 if(!_showDelete) {
@@ -82,12 +91,14 @@ class UserTaskStateManager extends State<UserTaskWidget> {
                     },
                     fullscreenDialog: true,
                   ));
+                } else {
+                  setState(() {
+                    removeRecordsAsync(items, _itemsToDelete, appState);
+                    _itemsToDelete.clear();
+                    _showDelete = false;
+                    Fluttertoast.showToast(msg: "Task Deleted");
+                  });
                 }
-                setState(() {
-                  removeRecordsAsync(items, _itemsToDelete, appState);
-                  _itemsToDelete.clear();
-                  _showDelete = false;
-                });
             }),
             showCancelButton()
           ],

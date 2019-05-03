@@ -75,10 +75,22 @@ class UserTaskFormState extends State<UserTaskForm> {
     appState = StateWidget.of(context).state;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-      title: Text(_titleController.text)), 
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back, color: Colors.purple,),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: true,
+        title: Text(_titleController.text, textAlign: TextAlign.start, style: TextStyle(fontSize: 25),),
+        elevation: 0.0,
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        textTheme: TextTheme(title: TextStyle(color: Colors.black, fontWeight: FontWeight.bold )),
+      ), 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save),
+        backgroundColor: Colors.lightGreen,
         onPressed: () {
           Fluttertoast.showToast(msg: "Saving Task");
           saveTask(config.apiBaseUrl);
@@ -88,6 +100,7 @@ class UserTaskFormState extends State<UserTaskForm> {
       body: Form(
       key: _formkey,
       child: Column(
+          
           crossAxisAlignment:  CrossAxisAlignment.start,
           children: <Widget>[
             TextField(

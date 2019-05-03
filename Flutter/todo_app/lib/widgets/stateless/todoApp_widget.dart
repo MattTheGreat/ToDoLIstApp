@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:todo_app/model/app_config.dart';
 import 'package:todo_app/model/state.dart';
 import 'package:todo_app/services/usertodo_service.dart';
@@ -50,9 +51,14 @@ class TodoAppState extends State<TodoApp>{
     var config = AppConfig.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Codelife Todo(" + config.environmentName +")"),
+        elevation: 0.0,
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        title: Text("Codelife Todo(" + config.environmentName +")",textAlign: TextAlign.start,
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
         actions: <Widget>[
           PopupMenuButton<Choice>(
+            icon: Icon(Icons.settings, color: Colors.black),
             onSelected: _select,
             itemBuilder: (BuildContext context) {
             return choices.map((Choice choise) {
@@ -64,7 +70,7 @@ class TodoAppState extends State<TodoApp>{
           },)
         ],
         ),
-        body : StreamBuilder(
+        body : StreamBuilder(         
            stream:  Firestore.instance.collection(appState.user.email).snapshots(),
            builder: (context, snapshot) {
             if(!snapshot.hasData) {
@@ -121,6 +127,10 @@ class TodoAppState extends State<TodoApp>{
   @override
   Widget build(BuildContext context) {
     //return _buildTodoList(context);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.white, //or set color with: Color(0xFF0000FF)
+    ));
+
     appState = StateWidget.of(context).state;
     return _buildContent();
   }

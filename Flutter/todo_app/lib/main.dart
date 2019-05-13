@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:todo_app/routes.dart/todo_routes.dart';
 import 'package:todo_app/state_widget.dart';
 
@@ -16,7 +17,8 @@ import 'package:todo_app/state_widget.dart';
 // - StateWidget incl. state data
 //    - RecipesApp
 //        - All other widgets which are able to access the data
-void main() => runApp(new StateWidget(
+void main() => runApp(
+      new StateWidget(
        child: new TodoRoutes(),
      ));
 

@@ -50,6 +50,7 @@ class TodoAppState extends State<TodoApp>{
   Widget _buildTodoList(BuildContext context) {
     var config = AppConfig.of(context);
     return Scaffold(
+      
       appBar: AppBar(
         elevation: 0.0,
         brightness: Brightness.light,

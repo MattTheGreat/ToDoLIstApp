@@ -54,6 +54,13 @@ class TodoAppState extends State<TodoApp>{
         elevation: 0.0,
         brightness: Brightness.light,
         backgroundColor: Colors.white,
+        bottom: new PreferredSize(
+          child: Container(
+            color: Colors.grey,
+            padding: const EdgeInsets.all(0.2),
+          ),
+          preferredSize: const Size.fromHeight(20.0),
+        ),
         title: Text("Codelife Todo(" + config.environmentName +")",textAlign: TextAlign.start,
                     style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
         actions: <Widget>[
@@ -74,7 +81,8 @@ class TodoAppState extends State<TodoApp>{
            stream:  Firestore.instance.collection(appState.user.email).snapshots(),
            builder: (context, snapshot) {
             if(!snapshot.hasData) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(),);
+
             }
             if(snapshot.hasError){
                 return Text("Error");

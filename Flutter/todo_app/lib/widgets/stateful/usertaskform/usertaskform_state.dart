@@ -7,7 +7,8 @@ import 'package:todo_app/state_widget.dart';
 import 'package:todo_app/widgets/stateful/usertaskform/usertaskform_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class UserTaskFormState extends State<UserTaskForm> {
+class UserTaskFormState extends State<UserTaskForm>  {
+
   final _formkey = GlobalKey<FormState>();
   TextEditingController _titleController = new TextEditingController();
   TextEditingController _descriptionController = new TextEditingController();
@@ -76,10 +77,18 @@ class UserTaskFormState extends State<UserTaskForm> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back, color: Colors.purple,),
           onPressed: () => Navigator.of(context).pop(),
+        ),
+        bottom: new PreferredSize(
+          child: Container(
+            color: Colors.grey,
+            padding: const EdgeInsets.all(0.2),
+          ),
+          preferredSize: const Size.fromHeight(20.0),
         ),
         centerTitle: true,
         title: Text(_titleController.text, textAlign: TextAlign.start, style: TextStyle(fontSize: 25),),
@@ -98,36 +107,64 @@ class UserTaskFormState extends State<UserTaskForm> {
         },
       ),
       body: Form(
-      key: _formkey,
-      child: Column(
-          
-          crossAxisAlignment:  CrossAxisAlignment.start,
-          children: <Widget>[
-            TextField(
-              controller: _titleController,
-              decoration: InputDecoration(
-                labelText: "Title:",
-                errorText: _validTitle ? 'A title is required' : null,
-                errorBorder: OutlineInputBorder(borderSide: new BorderSide(color: Colors.red) )
+        key: _formkey,
+        child: new Container(
+          padding: const EdgeInsets.all(30.0),
+          child: new Center(
+            child: new Column(         
+            crossAxisAlignment:  CrossAxisAlignment.start,
+            children: <Widget>[
+              TextField(
+                autofocus: true,
+                maxLength: 35,
+                controller: _titleController,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(16.0),
+                  labelText: "Title:",
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide()
+                  ),
+                  errorText: _validTitle ? 'A title is required' : null,
+                  errorBorder: OutlineInputBorder(borderSide: new BorderSide(color: Colors.red) )
+                ),
+              ),              
+              new Padding(
+                padding: EdgeInsets.only(top: 40.0),
               ),
-            ),
-            TextField(
-              controller: _descriptionController,
-              decoration: InputDecoration(
-                labelText: "Description:"
+              Container(
+                height: 260.0,
+                child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 99,
+                  controller: _descriptionController,
+                  decoration: InputDecoration(
+                    labelText: "Description",
+                    labelStyle: TextStyle(fontSize: 18),
+                    border: new OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(25.0),
+                      borderSide: new BorderSide()
+                    ),
+
+                  ),
+                )
               ),
-            ),
-            CheckboxListTile(
-              title: new Text("Complete"),
-              value: _taskcomplete,
-              onChanged: (bool value) {
-                setState(() {
-                 _taskcomplete = value; 
-                 print(value);                
-              });
-              })
-          ],
+              new Padding(
+                padding: EdgeInsets.only(top: 40.0),
+              ),
+              CheckboxListTile(
+                title: new Text("Complete"),
+                value: _taskcomplete,
+                onChanged: (bool value) {
+                  setState(() {
+                  _taskcomplete = value; 
+                  print(value);                
+                });
+                })
+            ],
+          )
         )
+      )
     )
   );
   }

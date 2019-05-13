@@ -17,43 +17,57 @@ class LoginScreen extends StatelessWidget {
       return Text(
         'Todo App',
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 60, fontFamily: 'Nadia'),
+        style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 60),
       );
     }
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 100.0),
-            _buildText(),
-            // TextField(
-            //   //controller: _titleController,
-            //   decoration: InputDecoration(
-            //     labelText: "Title:"
-            //   ),
-            // ),
-            // TextField(
-            //   //controller: _descriptionController,
-            //   decoration: InputDecoration(
-            //     labelText: "Description:"
-            //   ),
-            // ),
+      body: Container(
+        // decoration: new BoxDecoration(
+        //   image: new DecorationImage(
+        //     image: new AssetImage("assets/gifs/login.gif"),
+        //     fit: BoxFit.cover
+        //   )
+        // ),
+        child:Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              new Padding(
+                padding: EdgeInsets.only(top: 200.0),
+              ),
+              _buildText(),
+              // TextField(
+              //   //controller: _titleController,
+              //   decoration: InputDecoration(
+              //     labelText: "Title:"
+              //   ),
+              // ),
+              // TextField(
+              //   //controller: _descriptionController,
+              //   decoration: InputDecoration(
+              //     labelText: "Description:"
+              //   ),
+              // ),
 
-            // Space between "Recipes" and the button:
-            SizedBox(height: 200.0),
-            GoogleSignInButton(onPressed: () => 
-            StateWidget.of(context).signInWithGoogle(),
-            darkMode: true
-            //Navigator.of(context).pushReplacementNamed('/Home')
-            ,),
-            SizedBox(height: 200.0),
-            Text("Powered By #Codelife")
-          ],
+              // Space between "Recipes" and the button:
+              new Padding(
+                padding: EdgeInsets.only(top: 150.0),
+              ),
+              GoogleSignInButton(onPressed: () => 
+              StateWidget.of(context).signInWithGoogle(),
+              darkMode: true
+              //Navigator.of(context).pushReplacementNamed('/Home')
+              ,),
+              new Padding(
+                padding: EdgeInsets.only(top: 150.0),
+              ),
+              Text("Powered By #Codelife")
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

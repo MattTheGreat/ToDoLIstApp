@@ -26,11 +26,9 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 28
-
     lintOptions {
         disable 'InvalidPackage'
     }
-
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.todoapp"
@@ -41,13 +39,17 @@ android {
         testInstrumentationRunner "android.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
-
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+    }
+    buildToolsVersion '28.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -56,7 +58,7 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:+'
+    implementation 'com.android.support:support-v4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.1.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.1.1'
